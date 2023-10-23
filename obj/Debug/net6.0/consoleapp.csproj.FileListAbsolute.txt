@@ -1,0 +1,14 @@
+C:\Users\simo100f\Documents\GitHub\banko-simo100f\bin\Debug\net6.0\consoleapp.exe
+C:\Users\simo100f\Documents\GitHub\banko-simo100f\bin\Debug\net6.0\consoleapp.deps.json
+C:\Users\simo100f\Documents\GitHub\banko-simo100f\bin\Debug\net6.0\consoleapp.runtimeconfig.json
+C:\Users\simo100f\Documents\GitHub\banko-simo100f\bin\Debug\net6.0\consoleapp.dll
+C:\Users\simo100f\Documents\GitHub\banko-simo100f\bin\Debug\net6.0\consoleapp.pdb
+C:\Users\simo100f\Documents\GitHub\banko-simo100f\obj\Debug\net6.0\consoleapp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\simo100f\Documents\GitHub\banko-simo100f\obj\Debug\net6.0\consoleapp.AssemblyInfoInputs.cache
+C:\Users\simo100f\Documents\GitHub\banko-simo100f\obj\Debug\net6.0\consoleapp.AssemblyInfo.cs
+C:\Users\simo100f\Documents\GitHub\banko-simo100f\obj\Debug\net6.0\consoleapp.csproj.CoreCompileInputs.cache
+C:\Users\simo100f\Documents\GitHub\banko-simo100f\obj\Debug\net6.0\consoleapp.dll
+C:\Users\simo100f\Documents\GitHub\banko-simo100f\obj\Debug\net6.0\refint\consoleapp.dll
+C:\Users\simo100f\Documents\GitHub\banko-simo100f\obj\Debug\net6.0\consoleapp.pdb
+C:\Users\simo100f\Documents\GitHub\banko-simo100f\obj\Debug\net6.0\consoleapp.genruntimeconfig.cache
+C:\Users\simo100f\Documents\GitHub\banko-simo100f\obj\Debug\net6.0\ref\consoleapp.dll
