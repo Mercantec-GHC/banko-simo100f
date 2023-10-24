@@ -1,8 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 Dictionary<int, Dictionary<int, int[]>> bankoBoard = new Dictionary<int, Dictionary<int, int[]>>();
+Dictionary<int, List<int>> boardsWith1Row = new Dictionary<int, List<int>>();
+Dictionary<int, List<int>> boardsWith2Rows = new Dictionary<int, List<int>>();
+Dictionary<int, List<int>> boardsWith3Rows = new Dictionary<int, List<int>>();
+
 int numbersInRow = 0;
 int currentRow = 0;
 int currentBoard = 0;
@@ -13,7 +18,7 @@ int rowsPerBoard = 3;
 int numbersPerRow = 5;
 int boardsNeeded = 5;
 
-
+List<string> boardIDs = new List<string>();
 List<int> enteredNumbers = new List<int>();
 
 string userInput = "";
@@ -33,26 +38,125 @@ void GetNumbers()
     {
         Dictionary<int, int[]> rows = new Dictionary<int, int[]>();
 
-        for (int j = 0; j < rowsPerBoard; j++)
+        switch (i)
         {
-
-            int[] row = new int[numbersPerRow];
-
-            for (int k = 0; k < numbersPerRow; k++)
-            {
-                int minNumber = k * 10 + 1;
-                int maxNumber = (k + 1) * 10 - 1;
-
-                int randomNumber = rng.Next(minNumber, maxNumber + 1);
-
-                while (row.Contains(randomNumber))
+            case 1:
+                for (int j = 0; j < rowsPerBoard; j++)
                 {
-                    randomNumber = rng.Next(minNumber, maxNumber + 1);
+                    rows.Add(j, row);
+                    rows.Add(j, row);
+                    rows.Add(j, row);
                 }
+            case 2:
+                for (int j = 0; j < rowsPerBoard; j++)
+                {
 
-                row[k] = randomNumber;
-            }
-            rows.Add(j, row);
+                    int[] row = new int[numbersPerRow];
+
+                    for (int k = 0; k < numbersPerRow; k++)
+                    {
+                        int minNumber = k * 10 + 1;
+                        int maxNumber = (k + 1) * 10 - 1;
+
+                        int randomNumber = rng.Next(minNumber, maxNumber + 1);
+
+                        while (row.Contains(randomNumber))
+                        {
+                            randomNumber = rng.Next(minNumber, maxNumber + 1);
+                        }
+
+                        row[k] = randomNumber;
+                    }
+                    rows.Add(j, row);
+                }
+            case 3:
+                for (int j = 0; j < rowsPerBoard; j++)
+                {
+
+                    int[] row = new int[numbersPerRow];
+
+                    for (int k = 0; k < numbersPerRow; k++)
+                    {
+                        int minNumber = k * 10 + 1;
+                        int maxNumber = (k + 1) * 10 - 1;
+
+                        int randomNumber = rng.Next(minNumber, maxNumber + 1);
+
+                        while (row.Contains(randomNumber))
+                        {
+                            randomNumber = rng.Next(minNumber, maxNumber + 1);
+                        }
+
+                        row[k] = randomNumber;
+                    }
+                    rows.Add(j, row);
+                }
+            case 4:
+                for (int j = 0; j < rowsPerBoard; j++)
+                {
+
+                    int[] row = new int[numbersPerRow];
+
+                    for (int k = 0; k < numbersPerRow; k++)
+                    {
+                        int minNumber = k * 10 + 1;
+                        int maxNumber = (k + 1) * 10 - 1;
+
+                        int randomNumber = rng.Next(minNumber, maxNumber + 1);
+
+                        while (row.Contains(randomNumber))
+                        {
+                            randomNumber = rng.Next(minNumber, maxNumber + 1);
+                        }
+
+                        row[k] = randomNumber;
+                    }
+                    rows.Add(j, row);
+                }
+            case 5:
+                for (int j = 0; j < rowsPerBoard; j++)
+                {
+
+                    int[] row = new int[numbersPerRow];
+
+                    for (int k = 0; k < numbersPerRow; k++)
+                    {
+                        int minNumber = k * 10 + 1;
+                        int maxNumber = (k + 1) * 10 - 1;
+
+                        int randomNumber = rng.Next(minNumber, maxNumber + 1);
+
+                        while (row.Contains(randomNumber))
+                        {
+                            randomNumber = rng.Next(minNumber, maxNumber + 1);
+                        }
+
+                        row[k] = randomNumber;
+                    }
+                    rows.Add(j, row);
+                }
+            default:
+                for (int j = 0; j < rowsPerBoard; j++)
+                {
+
+                    int[] row = new int[numbersPerRow];
+
+                    for (int k = 0; k < numbersPerRow; k++)
+                    {
+                        int minNumber = k * 10 + 1;
+                        int maxNumber = (k + 1) * 10 - 1;
+
+                        int randomNumber = rng.Next(minNumber, maxNumber + 1);
+
+                        while (row.Contains(randomNumber))
+                        {
+                            randomNumber = rng.Next(minNumber, maxNumber + 1);
+                        }
+
+                        row[k] = randomNumber;
+                    }
+                    rows.Add(j, row);
+                }
         }
         bankoBoard.Add(i, rows);
     }
@@ -62,6 +166,7 @@ void GetNumbers()
 
 for (int i = 0; i < boardsNeeded; i++)
 {
+    Console.WriteLine($"Board ID: {currentBoard + 1}");
     for (int j = 0; j <= 18; j++)
     {
         for (int k = 0; k <= 108; k++)
@@ -228,11 +333,13 @@ for (int i = 0; i < boardsNeeded; i++)
     }
     currentBoard++;
     currentRow = 0;
+    Console.WriteLine("\n\n");
 }
 
 void CheckRows()
 {
     foreach (var board in bankoBoard)
+    {
         List<int> rowsCompleted = new List<int>();
         //Console.WriteLine(board);
         foreach (var row in board.Value)
@@ -241,15 +348,83 @@ void CheckRows()
             bool allValuesExistInCurrentRow = row.Value.All(value => enteredNumbers.Contains(value));
             if (allValuesExistInCurrentRow )
             {
-                Console.WriteLine($"All values in board {board.Key}, row {row.Key + 1} have been entered!");
-                rowsNeeded++;
                 rowsCompleted.Add(row.Key);
             }
         }
         if(rowsCompleted.Count == rowsNeeded)
         {
-            Console.WriteLine($"Congratulations you win {rowsNeeded} rows");
+            switch(rowsNeeded)
+            {
+                case 1:
+                    if(rowsCompleted.Count >= 1)
+                    {
+                        boardsWith1Row.Add(board.Key, rowsCompleted);
+                    }
+                    break;
+                case 2:
+                    if (rowsCompleted.Count >= 2)
+                    {
+                        boardsWith2Rows.Add(board.Key, rowsCompleted);
+                    }
+                    break;
+                case 3:
+                    if (rowsCompleted.Count >= 3)
+                    {
+                        boardsWith3Rows.Add(board.Key, rowsCompleted);
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
+    }
+    switch (rowsNeeded)
+    {
+        case 1:
+            if (boardsWith1Row.Count >= 1)
+            {
+                foreach (var board in boardsWith1Row)
+                {
+                    Console.WriteLine($"All values in board {board.Key + 1}, row:");
+                    foreach (var row in board.Value)
+                    {
+                        Console.WriteLine($"{row + 1}");
+                    }
+                    Console.WriteLine(" have been entered!");
+                    Console.WriteLine($"Congratulations you win {rowsNeeded} row");
+                }
+                rowsNeeded++;
+            }
+            break;
+        case 2:
+            if (boardsWith2Rows.Count >= 1)
+            {
+                foreach (var board in boardsWith2Rows)
+                {
+                    Console.WriteLine($"All values in board {board.Key + 1}, rows:");
+                    foreach (var row in board.Value)
+                    {
+                        Console.WriteLine($"{row + 1}");
+                    }
+                    Console.WriteLine(" have been entered!");
+                    Console.WriteLine($"Congratulations you win {rowsNeeded} rows");
+                }
+                rowsNeeded++;
+            }
+            break;
+        case 3:
+            if (boardsWith3Rows.Count >= 1)
+            {
+                foreach (var board in boardsWith3Rows)
+                {
+                    Console.WriteLine($"All values in board, {board.Key + 1}, have been entered!");
+                    Console.WriteLine($"Congratulations you win full board");
+                }
+                rowsNeeded++;
+            }
+            break;
+        default:
+            break;
     }
 }
 
@@ -258,7 +433,6 @@ void RunGame()
 {
     while (gameOver == false)
     {
-        bool allValuesExistInRow1;
 
         Console.WriteLine("Enter a number between 1 and 90, 0 to exit");
         userInput = Console.ReadLine();
@@ -283,6 +457,7 @@ void RunGame()
                     }
                     Console.WriteLine();
                     CheckRows();
+                    Console.WriteLine($"You need, {rowsNeeded}, rows to win");
                 }
             }
         }
