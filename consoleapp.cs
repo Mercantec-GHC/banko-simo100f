@@ -78,6 +78,12 @@ void GetNumbers()
                 rows.Add(2, new int[] { 1, 11, 21, 31, 42 });
                 boardIDs.Add("Test");
                 break;
+            case 6:
+                rows.Add(0, new int[] { 1, 11, 21, 31, 40 });
+                rows.Add(1, new int[] { 1, 11, 21, 31, 41 });
+                rows.Add(2, new int[] { 1, 11, 21, 31, 42 });
+                boardIDs.Add("test");
+                break;
             default:
                 for (int j = 0; j < rowsPerBoard; j++)
                 {
